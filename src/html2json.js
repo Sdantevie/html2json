@@ -16,11 +16,20 @@
     } )
   }
 
+  function kebabCase( str ) {
+    return str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase())
+  }
+
   function removeDOCTYPE(html) {
     return html
       .replace(/<\?xml.*\?>\n/, '')
       .replace(/<!doctype.*\>\n/, '')
       .replace(/<!DOCTYPE.*\>\n/, '');
+  }
+
+  function isObject(value) {
+    if (value === null) { return false;}
+    return ( (typeof value === 'function') || (typeof value === 'object')  && !! value);
   }
 
   global.html2json = function html2json(html) {
@@ -154,8 +163,16 @@
     if (json.attr) {
       attr = Object.keys(json.attr).map(function(key) {
         var value = json.attr[key];
-        if (Array.isArray(value)) value = value.join(' ');
+        if(isObject(value)){
+          var styleString = '';
+          Object.keys(value).forEach(val => {
+            styleString += kebabCase(value) + ':' + value[key] + ';';
+          });
+          return styleString;
+        } else {
+          if (Array.isArray(value)) value = value.join(' ');
         return key + '=' + q(value);
+        }
       }).join(' ');
       if (attr !== '') attr = ' ' + attr;
     }
