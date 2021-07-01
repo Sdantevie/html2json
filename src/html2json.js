@@ -166,7 +166,7 @@
         if(isObject(value)){
           var styleString = '';
           Object.keys(value).forEach(val => {
-            styleString += kebabCase(value) + ':' + value[key] + ';';
+            styleString += kebabCase(val) + ':' + value[key] + ';';
           });
           return styleString;
         } else {
