@@ -164,11 +164,11 @@
       attr = Object.keys(json.attr).map(function(key) {
         var value = json.attr[key];
         if(isObject(value)){
-          var styleString = '';
+          var styleString = 'style="';
           Object.keys(value).forEach(val => {
-            styleString += kebabCase(val) + ':' + value[key] + ';';
+            styleString += kebabCase(val) + ':' + value[val] + ';';
           });
-          return styleString;
+          return styleString + '"';
         } else {
           if (Array.isArray(value)) value = value.join(' ');
         return key + '=' + q(value);
