@@ -163,7 +163,7 @@
     if (json.attr) {
       attr = Object.keys(json.attr).map(function(key) {
         var value = json.attr[key];
-        console.log(value);
+        console.log(key);
         if(isObject(value) && !key.startsWith('data')){
           var styleString = `${key}="`;
           Object.keys(value).forEach(val => {
@@ -172,7 +172,6 @@
           return styleString + '"';
         } else if(key.startsWith('data')) {
           value = value.join(' ');
-          console.log(value);
           return key + '=' + q(value);
         } else {
           if (Array.isArray(value)) value = value.join(' ');
