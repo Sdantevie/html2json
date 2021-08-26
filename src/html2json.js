@@ -164,15 +164,18 @@
       attr = Object.keys(json.attr).map(function(key) {
         var value = json.attr[key];
         console.log(value);
-        if(isObject(value)){
+        if(isObject(value) && !key.startsWith('data')){
           var styleString = `${key}="`;
           Object.keys(value).forEach(val => {
             styleString += kebabCase(val) + ':' + value[val] + ';';
           });
           return styleString + '"';
+        } else if(key.startsWith('data')) {
+          value = value.join(' ');
+          console.log(value);
         } else {
           if (Array.isArray(value)) value = value.join(' ');
-        return key + '=' + q(value);
+          return key + '=' + q(value);
         }
       }).join(' ');
       if (attr !== '') attr = ' ' + attr;
