@@ -173,6 +173,7 @@
         } else if(key.startsWith('data')) {
           value = value.join(' ');
           console.log(value);
+          return key + '=' + q(value);
         } else {
           if (Array.isArray(value)) value = value.join(' ');
           return key + '=' + q(value);
