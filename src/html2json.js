@@ -163,6 +163,7 @@
     if (json.attr) {
       attr = Object.keys(json.attr).map(function(key) {
         var value = json.attr[key];
+        console.log(key);
         if(isObject(value)){
           var styleString = `${key}="`;
           Object.keys(value).forEach(val => {
