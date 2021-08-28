@@ -52,6 +52,7 @@
             var name = attr.name;
             var value = attr.value;
 
+
             // has multi attibutes
             // make it array of attribute
             if (name === 'style') {
@@ -66,7 +67,9 @@
                 }
               })
             } else if (value.match(/ /)) {
-              value = value.split(' ');
+              if(name != 'class'){
+                value = value.split(' ');
+              }
             } 
 
             // if attr already exists
@@ -178,6 +181,8 @@
         }
       }).join(' ');
       if (attr !== '') attr = ' ' + attr;
+
+      console.log(attr);
     }
 
     if (json.node === 'element') {
