@@ -181,8 +181,6 @@
         }
       }).join(' ');
       if (attr !== '') attr = ' ' + attr;
-
-      console.log(attr);
     }
 
     if (json.node === 'element') {
