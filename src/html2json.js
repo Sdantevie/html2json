@@ -56,6 +56,7 @@
             // has multi attibutes
             // make it array of attribute
             if (name === 'style') {
+              value = value.replaceAll('&quot;', '')
               var arr = value.split(';');
               if (!arr.length) return;
               value = {};
@@ -67,7 +68,7 @@
                 }
               })
             } else if (value.match(/ /)) {
-              if(name != 'class'){
+              if(!(name == 'class' || name == 'viewBox' || name == 'enable-background' || name == 'd')){
                 value = value.split(' ');
               }
             } 
