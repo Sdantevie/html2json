@@ -174,7 +174,7 @@
           });
           return styleString + '"';
         } else if(key.startsWith('data')) {
-          value = value.join(' ');
+          if (Array.isArray(value)) value = value.join(' ');
           return key + '=' + q(value);
         } else {
           if (Array.isArray(value)) value = value.join(' ');
