@@ -68,7 +68,7 @@
                 }
               })
             } else if (value.match(/ /)) {
-              if(!(name == 'class' || name == 'viewBox' || name == 'enable-background' || name == 'd')){
+              if(!(name == 'class' || name == 'viewBox' || name == 'enable-background' || name == 'd' || name == 'points')){
                 value = value.split(' ');
               }
             } 
