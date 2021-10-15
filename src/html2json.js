@@ -170,7 +170,11 @@
         if(isObject(value) && !key.startsWith('data')){
           var styleString = `${key}="`;
           Object.keys(value).forEach(val => {
-            styleString += kebabCase(val) + ':' + value[val] + ';';
+            if(val == 'webkitTextStroke'){
+              styleString += '-' + kebabCase(val) + ':' + value[val] + ';';
+            } else {
+              styleString += kebabCase(val) + ':' + value[val] + ';';
+            }
           });
           return styleString + '"';
         } else if(key.startsWith('data')) {
